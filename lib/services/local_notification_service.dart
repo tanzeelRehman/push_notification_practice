@@ -1,13 +1,14 @@
 // ignore_for_file: avoid_print, unused_local_variable
 
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class LocalNotificationService {
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
-  static void initialize() {
+  static void initialize(BuildContext context) {
     //! initializationSettings  for Android, IOS could be add as well
     //? Call this method in main app
     const InitializationSettings initializationSettings =
@@ -23,6 +24,7 @@ class LocalNotificationService {
         //* Paylod is the data which will be passed from the message
         //? We can send 1 data in the paylod
         String? data = details.payload;
+        Navigator.pushNamed(context, data!);
       },
     );
   }

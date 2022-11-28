@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:push_notification_practice/services/firebase_push_notification_service.dart';
+import 'package:push_notification_practice/services/local_notification_service.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -13,10 +14,10 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
 
-    FirebasePushNotificationService.getToken();
     FirebasePushNotificationService.messageOnBackgroundState(context);
-    // FirebasePushNotificationService.messageOnForegroundState();
-    // FirebasePushNotificationService.messageOnTerminatedState();
+    LocalNotificationService.initialize(context);
+    FirebasePushNotificationService.messageOnForegroundState();
+    FirebasePushNotificationService.messageOnTerminatedState();
   }
 
   @override
@@ -24,8 +25,8 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: Center(
           child: Container(
-        child: const Text("Notification will come soon"),
-      )),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+              child: const Text("notification will come here"))),
     );
   }
 }

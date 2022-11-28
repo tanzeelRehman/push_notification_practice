@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
-class RedPage extends StatefulWidget {
-  const RedPage({super.key});
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({super.key});
 
   @override
-  State<RedPage> createState() => _RedPageState();
+  State<ProfilePage> createState() => _RedPageState();
 }
 
-class _RedPageState extends State<RedPage> {
+class _RedPageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(color: Colors.red),
+      body: Container(
+        color: Colors.red,
+        child: const Center(
+          child: Text("Profile"),
+        ),
+      ),
     );
   }
 }

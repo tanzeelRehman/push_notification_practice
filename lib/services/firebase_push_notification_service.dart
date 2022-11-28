@@ -105,10 +105,9 @@ class FirebasePushNotificationService {
   }
 
   //! 2. Get the device token
-  static void getToken() async {
-    await FirebaseMessaging.instance.getToken().then((token) {
-      String? mytoken = token;
-      print("Device token: $mytoken");
-    });
+  static Future<String> getToken() async {
+    String mytoken;
+    mytoken = (await FirebaseMessaging.instance.getToken())!;
+    return mytoken;
   }
 }
